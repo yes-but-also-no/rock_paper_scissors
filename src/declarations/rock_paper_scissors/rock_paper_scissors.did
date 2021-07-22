@@ -1,3 +1,29 @@
+type Result = 
+ record {
+   opponentMove: Move;
+   opponentName: text;
+   opponentPlayedAt: int;
+   outcome: Outcome;
+   pointsEarned: nat32;
+ };
+type Outcome = 
+ variant {
+   lose;
+   tie;
+   win;
+ };
+type Move = 
+ variant {
+   paper;
+   rock;
+   scissors;
+ };
 service : {
-  greet: (text) -> (text);
+  getHighScoreByName: (text) -> (opt nat32) query;
+  getHighScores: () -> (vec record {
+                              text;
+                              nat32;
+                            }) query;
+  getLastPlayer: () -> (text, int) query;
+  playMove: (Move, opt text) -> (Result);
 }
