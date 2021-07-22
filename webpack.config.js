@@ -76,7 +76,11 @@ module.exports = {
   module: {
    rules: [
      { test: /\.(js|ts)x?$/, loader: "ts-loader" },
-     // { test: /\.css$/, use: ['style-loader','css-loader'] }
+     {
+       test: /\.css$/,
+       use: ['style-loader','css-loader'],
+       include: /flexboxgrid/
+     }
    ]
   },
   plugins: [

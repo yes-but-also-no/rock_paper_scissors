@@ -1,34 +1,26 @@
+:root {
+    /* Color Theme Swatches in Hex */
+    --color-blue: #07B0F2;
+    --color-cyan: #27CDF2;
+    --color-green: #ADBF24;
+    --color-orange: #F2B705;
+    --color-red: #D96941;
+}
+
+@font-face {
+    font-family: game-font-bold;
+    src: url(OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: game-font;
+    src: url(OpenSans-Regular.ttf);
+}
+
 body {
-    font-family: sans-serif;
+    font-family: game-font, sans-serif;
     font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
 }
 
-img {
-    max-width: 50vw;
-    max-height: 25vw;
-    display: block;
-    margin: auto;
-}
-section {
-    display: flex;
-    flex-flow: row wrap;
-    max-width: 40vw;
-    margin: auto;
-    align-items: baseline;
-}
-
-#clickMeBtn {
-    padding: 5px 20px;
-    margin: 10px auto;
-    float: right;
-}
-
-#greeting {
-    margin: 10px auto;
-    padding: 10px 60px;
-    border: 1px solid #222;
-}
-
-#greeting:empty {
-    display: none;
-}

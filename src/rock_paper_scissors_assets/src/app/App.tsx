@@ -1,12 +1,23 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import styled from "styled-components";
+import Logo from "../components/Logo";
 
-// Dfinity imports
-import { rock_paper_scissors } from "../../../declarations/rock_paper_scissors";
+const TestCol = styled(Col)`
+    border: 1px solid red;
+    max-width: 800px;
+`
 
 const App: React.FC = () => {
 
     return (
-        <h1>Hello World!</h1>
+        <Grid fluid>
+            <Row center='xs'>
+                <TestCol xs={12} md={8} lg={8}>
+                    <Logo />
+                </TestCol>
+            </Row>
+        </Grid>
     );
 };
 
