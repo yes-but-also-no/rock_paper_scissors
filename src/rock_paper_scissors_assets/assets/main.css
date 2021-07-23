@@ -1,15 +1,15 @@
 :root {
     /* Color Theme Swatches in Hex */
-    --color-blue: #07B0F2;
-    --color-cyan: #27CDF2;
-    --color-green: #ADBF24;
-    --color-orange: #F2B705;
-    --color-red: #D96941;
+    --color-blue-dark: #4c69f6;
+    --color-blue: #4c94f6;
+    --color-yellow: #f6db35;
+    --color-orange: #ffc510;
+    --color-red: #ee5454;
 }
 
 @font-face {
-    font-family: game-font-bold;
-    src: url(OpenSans-Bold.ttf);
+    font-family: logo-font;
+    src: url(Bangers-Regular.ttf);
 }
 
 @font-face {
