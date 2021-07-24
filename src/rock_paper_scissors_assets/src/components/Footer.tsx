@@ -13,7 +13,7 @@ const FooterCol = styled(Col)`
   // space to breathe
   padding-bottom: 10px;
 
-  // cool, comic book yellow
+  // cool, comic book white
   color: white;
 
   // logo font or sans
@@ -32,11 +32,17 @@ const FooterCol = styled(Col)`
   }
 `;
 
+// these guys only exist to take up space
+const FillerCol = styled(Col).attrs({xs: true})`
+  // we dont want the filler columns to have any size, so as to not mess us up in small screens
+  padding: 0;
+`;
+
 // this is the footer info for dev name and other info
 const Footer : React.FC = () =>
     <Grid fluid>
         <Row center='xs'>
-            <Col xs />
+            <FillerCol />
 
             <FooterCol>
                 Created by
@@ -46,7 +52,7 @@ const Footer : React.FC = () =>
                 <img src='imgs/cheems.png' alt='me' />
             </FooterCol>
 
-            <Col xs />
+            <FillerCol />
 
             <FooterCol>
                 Powered by
@@ -56,7 +62,7 @@ const Footer : React.FC = () =>
                 <img src='imgs/dfinity.png' alt='me' />
             </FooterCol>
 
-            <Col xs />
+            <FillerCol />
         </Row>
     </Grid>;
 
