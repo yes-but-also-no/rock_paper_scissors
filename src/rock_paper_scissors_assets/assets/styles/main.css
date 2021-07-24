@@ -1,12 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap');
 
 :root {
-    /* Color Theme Swatches in Hex */
+    /* theme colors */
     --color-blue-dark: #4c69f6;
     --color-blue: #4c94f6;
     --color-yellow: #f6db35;
     --color-orange: #ffc510;
     --color-red: #ee5454;
+    --color-purple: #c031e3;
+    --color-green: #6fd60f;
+
+    /* utility colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* contrast colors */
+    --color-blue-dark-contrast: var(--color-white);
+    --color-blue-contrast: var(--color-white);
+    --color-yellow-contrast: var(--color-black);
+    --color-orange-contrast: var(--color-black);
+    --color-red-contrast: var(--color-white);
+    --color-purple-contrast: var(--color-white);
+    --color-green-contrast: var(--color-black);
+    --color-white-contrast: var(--color-black);
+    --color-black-contrast: var(--color-white);
 }
 
 html,
