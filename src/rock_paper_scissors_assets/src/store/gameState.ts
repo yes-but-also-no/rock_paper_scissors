@@ -34,12 +34,27 @@ const gameStateSlice = createSlice({
                 state.inspectPlayerName = '';
                 state.highScoresOpen = false;
             }
+        },
+        // opens or closes the high scores menu
+        setHighScoresOpen: (state, action: PayloadAction<boolean>) => {
+            // if we are in a match, we cannot view scores
+            if (state.inMatch)
+                return;
+
+            // set our high scores flag
+            state.highScoresOpen = action.payload;
+
+            // if we are opening, clear any other flags
+            if (action.payload) {
+                state.errorMessage = '';
+                state.inspectPlayerName = '';
+            }
         }
     }
 })
 
 // pull actions
-export const {setInMatch} = gameStateSlice.actions;
+export const {setInMatch, setHighScoresOpen} = gameStateSlice.actions;
 
 // selectors
 

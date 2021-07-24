@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled from "styled-components";
 import Note from "../Controls/Note";
+import {useAppDispatch} from "../../hooks";
+import {setHighScoresOpen} from "../../store/gameState";
 
 // style to handle image
 const HighScoresNote = styled(Note)`
@@ -26,7 +28,17 @@ const HighScoresNote = styled(Note)`
 // this is the button that launches our high scores view
 const HighScoresButton: React.FC = () => {
 
-    return <HighScoresNote color='white'>
+    // hook dispatch
+    const dispatch = useAppDispatch();
+
+    // click method
+    const onClick = useCallback(() =>
+        dispatch(
+            setHighScoresOpen(true)
+        )
+    , [dispatch]);
+
+    return <HighScoresNote onClick={onClick} color='white'>
         <img src='imgs/icons/hs.svg' alt='high scores'/>
     </HighScoresNote>
 
