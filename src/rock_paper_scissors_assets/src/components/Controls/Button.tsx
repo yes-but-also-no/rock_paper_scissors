@@ -36,21 +36,22 @@ interface ButtonProps {
     color: string; // the color to use
     disabled?: boolean; // is it disabled?
     icon?: React.ReactNode; // optional icon component
+    onClick?(): void; // click event
 }
 
 // this is our basic button component
 const Button : React.FC<ButtonProps> = props => {
 
     // expand props
-    const { color, disabled, icon, children } = props;
+    const {color, disabled, icon, children, onClick} = props;
 
-    return <ButtonContainer color={disabled ? 'disabled' : color}>
+    return <ButtonContainer onClick={onClick} color={disabled ? 'disabled' : color}>
         <span>
-            { children }
+            {children}
         </span>
 
         {icon &&
-            icon
+        icon
         }
     </ButtonContainer>
 }
