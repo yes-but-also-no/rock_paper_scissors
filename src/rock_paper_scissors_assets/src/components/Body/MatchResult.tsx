@@ -5,6 +5,7 @@ import {Spacer} from "../Helpers";
 import {Result} from "../../services/api";
 import MoveObject from "./MoveObject";
 import OutcomeObject from "./OutcomeObject";
+import Note from "../Controls/Note";
 
 // props def
 interface MatchResultProps {
@@ -19,6 +20,16 @@ const MatchResult: React.FC<MatchResultProps> = props => {
     const { move, result } = props;
 
     return <Grid fluid>
+
+        <Row center='xs'>
+            <Col xs md={9}>
+                <Note color='white'>
+                    <strong>{result.opponentName}</strong>
+                </Note>
+            </Col>
+        </Row>
+
+        <Spacer />
 
         <Row center='xs'>
             <Col xs={11} md={9}>

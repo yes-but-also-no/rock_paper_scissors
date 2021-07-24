@@ -43,7 +43,7 @@ const GameFooter : React.FC = () => {
 
             <FooterCol>
                 <Note color='white'>
-                    1st
+                    HS
                 </Note>
             </FooterCol>
         </Row>
