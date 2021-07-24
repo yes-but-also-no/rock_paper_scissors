@@ -4,3 +4,10 @@ export const NameMinLength = 2;
 
 // anonymous name
 export const AnonymousName = 'ANONYMOUS';
+
+// moves
+export const MoveDefinitions = {
+    Rock: {rock: null},
+    Paper: {paper: null},
+    Scissors: {scissors: null},
+}
