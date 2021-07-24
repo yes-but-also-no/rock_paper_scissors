@@ -13,6 +13,7 @@
     /* utility colors */
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-disabled: darkgrey;
 
     /* contrast colors */
     --color-blue-dark-contrast: var(--color-white);
@@ -24,16 +25,22 @@
     --color-green-contrast: var(--color-black);
     --color-white-contrast: var(--color-black);
     --color-black-contrast: var(--color-white);
+    --color-disabled-contrast: dimgrey;
 }
 
 html,
 body,
 #root {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     height: 100%;
+    text-transform: uppercase;
+}
+
+strong {
+    font-style: italic;
 }
 
 html {

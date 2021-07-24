@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {RootState} from "./index";
 
 // this tracks all info related to the player
 // high scores, rank, etc
@@ -37,6 +38,6 @@ export const { setPlayerName } = playerInfoSlice.actions;
 // selectors
 
 // has the player chosen a name?
-// export const selectHasPickedName = state => state.
+export const selectHasPickedName = (state: RootState) => state.playerInfo.playerName !== '';
 
 export default playerInfoSlice.reducer;

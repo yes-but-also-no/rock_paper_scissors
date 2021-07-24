@@ -7,7 +7,7 @@ const ButtonContainer = styled.div<{color: string}>`
   background-color: var(--color-${props => props.color});
   
   // padding makes it look good
-  padding: 20px;
+  padding: 15px;
   
   // text color contrasts
   color: var(--color-${props => props.color}-contrast);
@@ -31,13 +31,27 @@ const ButtonContainer = styled.div<{color: string}>`
   }
 `;
 
-// this is our basic button component
-const Button : React.FC = props => {
+// props for our button
+interface ButtonProps {
+    color: string; // the color to use
+    disabled?: boolean; // is it disabled?
+    icon?: React.ReactNode; // optional icon component
+}
 
-    return <ButtonContainer color='yellow'>
+// this is our basic button component
+const Button : React.FC<ButtonProps> = props => {
+
+    // expand props
+    const { color, disabled, icon, children } = props;
+
+    return <ButtonContainer color={disabled ? 'disabled' : color}>
         <span>
-        PLAY <strong>ANONYMOUSLY</strong>
+            { children }
         </span>
+
+        {icon &&
+            icon
+        }
     </ButtonContainer>
 }
 

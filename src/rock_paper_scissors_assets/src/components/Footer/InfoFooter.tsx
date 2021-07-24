@@ -39,9 +39,9 @@ const FillerCol = styled(Col).attrs({xs: true})`
 `;
 
 // this is the footer info for dev name and other info
-const Footer : React.FC = () =>
+const InfoFooter : React.FC = () =>
     <Grid fluid>
-        <Row center='xs'>
+        <Row center='xs' middle='xs'>
             <FillerCol />
 
             <FooterCol>
@@ -66,4 +66,4 @@ const Footer : React.FC = () =>
         </Row>
     </Grid>;
 
-export default Footer;
+export default InfoFooter;

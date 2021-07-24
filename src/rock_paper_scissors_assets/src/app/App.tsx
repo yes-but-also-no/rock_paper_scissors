@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo";
-import Footer from "../components/Footer";
-import Button from "../components/Button";
+import InfoFooter from "../components/Footer/InfoFooter";
+import Button from "../components/Controls/Button";
+import Footer from "../components/Footer/Footer";
+import Body from "../components/Body/Body";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -41,7 +43,7 @@ const App: React.FC = () => {
             </Section>
 
             <Section>
-                <Button></Button>
+                <Body />
             </Section>
 
             <Section>
