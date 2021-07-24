@@ -13,7 +13,7 @@ const ButtonContainer = styled.div<{color: string}>`
   color: var(--color-${props => props.color}-contrast);
   
   // cool shadow right?
-  box-shadow: 6px 6px 0 black;
+  box-shadow: var(--standard-shadow);
   
   // don't cut yourself on the edge
   transform: skewX(-15deg);

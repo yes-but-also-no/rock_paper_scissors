@@ -26,6 +26,9 @@
     --color-white-contrast: var(--color-black);
     --color-black-contrast: var(--color-white);
     --color-disabled-contrast: dimgrey;
+
+    /* standard shadow */
+    --standard-shadow: 4px 4px 0 black;
 }
 
 html,
@@ -37,6 +40,10 @@ body,
     padding: 0;
     height: 100%;
     text-transform: uppercase;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 strong {

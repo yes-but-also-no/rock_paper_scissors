@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 import {useAppSelector} from "../../hooks";
 import {selectHasPickedName} from "../../store/playerInfo";
 import {Col, Grid, Row} from "react-flexbox-grid";
@@ -6,6 +6,7 @@ import Button from "../Controls/Button";
 import styled from "styled-components";
 import Note from "../Controls/Note";
 import Input from "../Controls/Input";
+import {NameMaxLength, NameMinLength} from "../../constants";
 
 // body container gives us some nice spacing
 const BodyContainer = styled.div`
@@ -16,7 +17,33 @@ const BodyContainer = styled.div`
 const ChooseName : React.FC = () => {
 
     // find out if we have a name or not
-    const hasPickedName = useAppSelector(selectHasPickedName);
+    const [name, setName] = useState('');
+
+    // track valid state
+    const [invalid, setInvalid] = useState(false);
+
+    // type handler
+    const onChange = useCallback(e => {
+
+        // get length
+        const nameLength = e.target.value.length;
+
+        // check length
+        if (nameLength > NameMaxLength)
+            return;
+
+        // update
+        setName(e.target.value);
+
+        // set invalid
+        setInvalid(nameLength < NameMinLength);
+
+    }, []);
+
+    // submit handler
+    const onSubmit = useCallback(() => {
+        console.log('Name is ', name)
+    }, []);
 
     return <Grid fluid>
         <Row start='xs'>
@@ -29,7 +56,7 @@ const ChooseName : React.FC = () => {
 
         <Row start='xs'>
             <Col>
-                <Input />
+                <Input invalid={invalid} onChange={onChange} value={name} onSubmit={onSubmit} />
             </Col>
         </Row>
 

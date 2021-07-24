@@ -17,6 +17,9 @@ const Note = styled.div<{color: string}>`
   
   // cool border right?
   border: 2px solid black;
+
+  // cool shadow right?
+  box-shadow: var(--standard-shadow);
   
   // a slightly less annoying font
   font-family: 'Montserrat', sans-serif;
