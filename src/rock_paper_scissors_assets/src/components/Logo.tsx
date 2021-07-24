@@ -12,7 +12,7 @@ const Logo = styled.div`
   font-size: 8vh;
 
   // give us some space on top
-  padding-top: 2vh;
+  padding: 2vh 20px 0;
 
   // center align
   text-align: center;

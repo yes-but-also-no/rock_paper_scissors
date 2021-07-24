@@ -8,7 +8,7 @@ const MainContentArea = styled.div`
   max-width: 768px;
 
   // fill the screen
-  height: 100vh;
+  height: 100%;
 
   // center
   margin: auto;
