@@ -18,3 +18,6 @@ export const OutcomeDefinitions = {
     Tie: {tie: null},
     Lose: {lose: null},
 }
+
+// high score fetch interval
+export const HighScoreFetchInterval = 10 * 60 * 1000; // every 10 minutes

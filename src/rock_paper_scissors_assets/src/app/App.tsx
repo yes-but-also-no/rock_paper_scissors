@@ -3,8 +3,12 @@ import styled from "styled-components";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer/Footer";
 import Body from "../components/Body/Body";
-import {useAppSelector} from "../hooks";
+import {useAppDispatch, useAppSelector} from "../hooks";
 import {selectInMatch} from "../store/gameState";
+import {setHighScores} from "../store/highScores";
+import {useQuery} from "react-query";
+import {fetchHighScores} from "../services/api";
+import {HighScoreFetchInterval} from "../constants";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -35,8 +39,22 @@ const Section = styled.div`
 // Main app component
 const App: React.FC = () => {
 
+    // hook dispatch
+    const dispatch = useAppDispatch();
+
     // find out if we are in a match
     const isInMatch = useAppSelector(selectInMatch);
+
+    // sync our high scores
+    useQuery(
+        'highScores',
+        fetchHighScores,
+        {
+            refetchInterval: HighScoreFetchInterval,
+            onSuccess: data =>
+                dispatch(setHighScores(data))
+        }
+    );
 
     return (
         <MainContentArea>

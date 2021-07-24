@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {useAppSelector} from "../../hooks";
 import {selectPlayerIsAnonymous, selectPlayerName} from "../../store/playerInfo";
 import Note from "../Controls/Note";
+import HighScoresButton from "../HighScores/HighScoresButton";
 
 // this is a footer column with text styling
 const FooterCol = styled(Col)`
@@ -41,11 +42,9 @@ const GameFooter : React.FC = () => {
                 </Note>
             </FooterCol>
 
-            <FooterCol>
-                <Note color='white'>
-                    HS
-                </Note>
-            </FooterCol>
+
+            <HighScoresButton/>
+
         </Row>
     </Grid>
 

@@ -1,12 +1,14 @@
 import {combineReducers} from "redux";
 import playerInfo from "./playerInfo";
 import gameState from "./gameState";
+import highScores from "./highScores";
 import {configureStore} from "@reduxjs/toolkit";
 
 // combine slices
 const reducer = combineReducers({
     playerInfo,
-    gameState
+    gameState,
+    highScores
 });
 
 // make the store
