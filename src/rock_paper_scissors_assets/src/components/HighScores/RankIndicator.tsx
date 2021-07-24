@@ -1,13 +1,17 @@
 import React, {useMemo} from 'react';
 import Note from "../Controls/Note";
-import {useAppSelector, usePlayerRanking} from "../../hooks";
-import {selectPlayerName} from "../../store/playerInfo";
+import {usePlayerRanking} from "../../hooks";
+
+// rank indicator props
+interface RankIndicatorProps {
+    playerName: string; // the player whos rank to show
+}
 
 // this shows a players rank indicator
-const RankIndicator: React.FC = () => {
+const RankIndicator: React.FC<RankIndicatorProps> = props => {
 
-    // find our name
-    const playerName = useAppSelector(selectPlayerName);
+    // expand props
+    const {playerName} = props;
 
     // try and get our rank
     const rank = usePlayerRanking(playerName);

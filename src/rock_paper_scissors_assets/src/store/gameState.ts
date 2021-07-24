@@ -49,16 +49,37 @@ const gameStateSlice = createSlice({
                 state.errorMessage = '';
                 state.inspectPlayerName = '';
             }
-        }
+        },
+        // selects a player for inspection
+        setPlayerToInspect: (state, action: PayloadAction<string>) => {
+            // if we are in a match, we cannot view scores
+            if (state.inMatch)
+                return;
+
+            // set our high scores flag
+            state.inspectPlayerName = action.payload;
+
+            // if we are opening, clear any other flags
+            if (action.payload !== '') {
+                state.highScoresOpen = false;
+                state.errorMessage = '';
+            }
+        },
     }
 })
 
 // pull actions
-export const {setInMatch, setHighScoresOpen} = gameStateSlice.actions;
+export const {setInMatch, setHighScoresOpen, setPlayerToInspect} = gameStateSlice.actions;
 
 // selectors
 
 // are we in a match
 export const selectInMatch = (state: RootState) => state.gameState.inMatch;
+
+// is high scores open
+export const selectIsHighScoresOpen = (state: RootState) => state.gameState.highScoresOpen;
+
+// is player inspection open
+export const selectIsInspectPlayerOpen = (state: RootState) => state.gameState.inspectPlayerName !== '';
 
 export default gameStateSlice.reducer;

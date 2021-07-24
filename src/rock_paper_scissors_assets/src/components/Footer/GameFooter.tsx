@@ -3,6 +3,7 @@ import {Col, Grid, Row} from 'react-flexbox-grid';
 import styled from "styled-components";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {selectPlayerIsAnonymous, selectPlayerName, setPlayerName} from "../../store/playerInfo";
+import {setPlayerToInspect} from "../../store/gameState";
 import Note from "../Controls/Note";
 import HighScoresButton from "../HighScores/HighScoresButton";
 import RankIndicator from "../HighScores/RankIndicator";
@@ -42,14 +43,16 @@ const GameFooter : React.FC = () => {
 
         // otherwise, inspect our player
         else
-            console.log('clicked name');
-    }, [dispatch, isAnonymous]);
+            dispatch(
+                setPlayerToInspect(playerName)
+            );
+    }, [dispatch, isAnonymous, playerName]);
 
     return <Grid fluid>
         <Row center='xs'>
             {!isAnonymous &&
             <FooterCol>
-                <RankIndicator/>
+                <RankIndicator playerName={playerName}/>
             </FooterCol>
             }
 

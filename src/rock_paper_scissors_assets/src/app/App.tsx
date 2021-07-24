@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer/Footer";
 import Body from "../components/Body/Body";
 import {useAppDispatch, useAppSelector} from "../hooks";
-import {selectInMatch} from "../store/gameState";
+import {selectInMatch, selectIsHighScoresOpen, setHighScoresOpen} from "../store/gameState";
 import {setHighScores} from "../store/highScores";
 import {useQuery} from "react-query";
 import {fetchHighScores} from "../services/api";
 import {HighScoreFetchInterval, HighScoresQueryKey} from "../constants";
+import Modal from "../components/Modal/Modal";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -56,8 +57,24 @@ const App: React.FC = () => {
         }
     );
 
+    // find out if we have high scores open
+    const isHighScoresOpen = useAppSelector(selectIsHighScoresOpen);
+
+    // method to close hide scores
+    const closeHighScores = useCallback(() =>
+            dispatch(
+                setHighScoresOpen(false)
+            )
+        , [dispatch]);
+
     return (
         <MainContentArea>
+            {isHighScoresOpen &&
+            <Modal close={closeHighScores} title='high scores' color='blue'>
+                Hello
+            </Modal>
+            }
+
             <Section>
                 {!isInMatch &&
                 <Logo/>
@@ -66,7 +83,7 @@ const App: React.FC = () => {
 
 
             <Section>
-                <Body />
+                <Body/>
             </Section>
 
             <Section>
