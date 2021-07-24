@@ -6,7 +6,7 @@ import {FillerCol} from "../Helpers";
 // this is a footer column with text styling
 const FooterCol = styled(Col)`
   // don't want to brag or anything
-  font-size: smaller;
+  font-size: medium;
   
   // center align best align
   text-align: center;
