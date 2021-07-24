@@ -1,5 +1,5 @@
 import { rock_paper_scissors } from "../../../declarations/rock_paper_scissors";
-import { Move, Result } from "../../../declarations/rock_paper_scissors/rock_paper_scissors.did";
+import { Move, Result, Outcome } from "../../../declarations/rock_paper_scissors/rock_paper_scissors.did";
 import {QueryClient} from "react-query";
 
 // Create queryClient
@@ -15,4 +15,4 @@ export interface SubmitMoveParams {
 export const submitMove = (moveParams: SubmitMoveParams): Promise<Result> =>
     rock_paper_scissors.playMove(moveParams.move, [moveParams.playerName]);
 
-export {Move, Result};
+export {Move, Result, Outcome};

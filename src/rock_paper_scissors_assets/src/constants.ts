@@ -11,3 +11,10 @@ export const MoveDefinitions = {
     Paper: {paper: null},
     Scissors: {scissors: null},
 }
+
+// outcomes
+export const OutcomeDefinitions = {
+    Win: {win: null},
+    Tie: {tie: null},
+    Lose: {lose: null},
+}

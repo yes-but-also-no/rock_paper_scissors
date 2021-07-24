@@ -1,29 +1,28 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Move} from "../../services/api";
 import {Col, Grid, Row} from "react-flexbox-grid";
-import Note from "../Controls/Note";
 import {Spacer} from "../Helpers";
-import Button from "../Controls/Button";
+import {Result} from "../../services/api";
 import MoveObject from "./MoveObject";
+import OutcomeObject from "./OutcomeObject";
 
 // props def
-interface MoveInProgressProps {
-    move: Move; // the move we are currently submitting
+interface MatchResultProps {
+    move: Move; // the move we submitted
+    result: Result; // the match result
 }
 
-// this is where you pick the move to make
-const MoveInProgress: React.FC<MoveInProgressProps> = props => {
+// this is where we get the outcome of the match
+const MatchResult: React.FC<MatchResultProps> = props => {
 
     // expand props
-    const { move } = props;
+    const { move, result } = props;
 
     return <Grid fluid>
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='disabled'>
-                    <div className='ld ld-ring ld-spin' />
-                </Button>
+                <MoveObject move={result.opponentMove} />
             </Col>
         </Row>
 
@@ -32,9 +31,7 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
 
         <Row center='xs'>
             <Col>
-                <Note color='white'>
-                    <strong>VS</strong>
-                </Note>
+                <OutcomeObject result={result} />
             </Col>
         </Row>
 
@@ -51,4 +48,4 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
 
 };
 
-export default MoveInProgress;
+export default MatchResult;

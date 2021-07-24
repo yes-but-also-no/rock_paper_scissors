@@ -1,13 +1,10 @@
-import React, {useCallback} from "react";
-import {useAppSelector} from "../../hooks";
-import {selectPlayerName} from "../../store/playerInfo";
-import {useMutation} from "react-query";
-import {Move, submitMove} from "../../services/api";
+import React from "react";
+import {Move} from "../../services/api";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Note from "../Controls/Note";
 import {Spacer} from "../Helpers";
-import Button from "../Controls/Button";
 import {MoveDefinitions} from "../../constants";
+import MoveObject from "./MoveObject";
 
 // props def
 interface ChooseMoveProps {
@@ -39,9 +36,7 @@ const ChooseMove: React.FC<ChooseMoveProps> = props => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='red' onClick={() => playMove(MoveDefinitions.Rock)}>
-                    <strong>rock</strong>, the power move
-                </Button>
+                <MoveObject move={MoveDefinitions.Rock} onClick={() => playMove(MoveDefinitions.Rock)} />
             </Col>
         </Row>
 
@@ -49,9 +44,7 @@ const ChooseMove: React.FC<ChooseMoveProps> = props => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='yellow' onClick={() => playMove(MoveDefinitions.Paper)}>
-                    <strong>paper</strong>, the safe bet
-                </Button>
+                <MoveObject move={MoveDefinitions.Paper} onClick={() => playMove(MoveDefinitions.Paper)} />
             </Col>
         </Row>
 
@@ -59,9 +52,7 @@ const ChooseMove: React.FC<ChooseMoveProps> = props => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='purple' onClick={() => playMove(MoveDefinitions.Scissors)}>
-                    <strong>scissors</strong>, the wildcard
-                </Button>
+                <MoveObject move={MoveDefinitions.Scissors} onClick={() => playMove(MoveDefinitions.Scissors)} />
             </Col>
         </Row>
 
