@@ -9,9 +9,6 @@ const Note = styled.div<{color: string}>`
   // padding makes it look good
   padding: 15px;
   
-  // notes need space to breathe
-  margin: 5px;
-  
   // text color contrasts
   color: var(--color-${props => props.color}-contrast);
   

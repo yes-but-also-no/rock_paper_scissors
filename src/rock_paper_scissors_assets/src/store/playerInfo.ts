@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "./index";
+import {AnonymousName} from "../constants";
 
 // this tracks all info related to the player
 // high scores, rank, etc
@@ -39,5 +40,11 @@ export const { setPlayerName } = playerInfoSlice.actions;
 
 // has the player chosen a name?
 export const selectHasPickedName = (state: RootState) => state.playerInfo.playerName !== '';
+
+// check if anon
+export const selectPlayerIsAnonymous = (state: RootState) => state.playerInfo.playerName === AnonymousName;
+
+// get the name
+export const selectPlayerName = (state: RootState) => state.playerInfo.playerName;
 
 export default playerInfoSlice.reducer;

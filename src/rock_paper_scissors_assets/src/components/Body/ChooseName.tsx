@@ -80,7 +80,7 @@ const ChooseName: React.FC = () => {
     return <Grid fluid>
 
         <Row center='xs'>
-            <Col xs={11}>
+            <Col xs={11} md={9}>
                 <Button color='yellow' onClick={onPlayClick}>
                     play as <strong>{(name === '' || invalid) ? AnonymousName : name}</strong>
                 </Button>
@@ -122,8 +122,8 @@ const ChooseName: React.FC = () => {
 
         <Spacer/>
 
-        <Row start='xs'>
-            <Col xs={12}>
+        <Row center='xs'>
+            <Col xs={12} md={9}>
                 <Input invalid={invalid} onChange={onChange} value={name} onSubmit={onSubmit}/>
             </Col>
         </Row>
