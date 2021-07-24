@@ -104,7 +104,7 @@ const Input: React.FC<InputProps> = props => {
 
         // call the event
         onSubmit();
-    }, []);
+    }, [onSubmit]);
 
     return (
         <InputRow onSubmit={onSubmitHandler}>

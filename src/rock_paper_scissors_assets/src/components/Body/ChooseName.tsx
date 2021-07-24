@@ -43,7 +43,7 @@ const ChooseName : React.FC = () => {
     // submit handler
     const onSubmit = useCallback(() => {
         console.log('Name is ', name)
-    }, []);
+    }, [name]);
 
     return <Grid fluid>
         <Row start='xs'>
