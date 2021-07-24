@@ -33,7 +33,7 @@ const Logo = styled.div`
   text-shadow: 2px 4px 0 black;
 
   // entry anim
-  animation: 1s ${logoAnim};
+  animation: 2s ${logoAnim};
 
   // name of the game
   &:after {

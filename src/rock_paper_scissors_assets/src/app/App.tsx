@@ -22,11 +22,6 @@ const MainContentArea = styled.div`
 
   // space between to make it nice
   justify-content: space-between;
-  
-  // who doesn't love a sexy background
-  // totally lifted this from https://cssgradient.io/gradient-backgrounds/
-  background-color: var(--color-blue-dark);
-  background-image: linear-gradient(62deg, var(--color-blue-dark) 0%, var(--color-blue) 100%);
 `;
 
 // sections fill their contents
