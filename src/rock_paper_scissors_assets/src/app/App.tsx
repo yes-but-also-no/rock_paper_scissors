@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo";
+import Footer from "../components/Footer";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -21,6 +22,11 @@ const MainContentArea = styled.div`
 
   // space between to make it nice
   justify-content: space-between;
+  
+  // who doesn't love a sexy background
+  // totally lifted this from https://cssgradient.io/gradient-backgrounds/
+  background-color: var(--color-blue-dark);
+  background-image: linear-gradient(62deg, var(--color-blue-dark) 0%, var(--color-blue) 100%);
 `;
 
 // sections fill their contents
@@ -39,11 +45,11 @@ const App: React.FC = () => {
             </Section>
 
             <Section>
-                <Logo/>
+
             </Section>
 
             <Section>
-                <Logo/>
+                <Footer />
             </Section>
 
         </MainContentArea>

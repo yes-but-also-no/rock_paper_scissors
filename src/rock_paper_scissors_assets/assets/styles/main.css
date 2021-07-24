@@ -9,12 +9,12 @@
 
 @font-face {
     font-family: logo-font;
-    src: url(Bangers-Regular.ttf);
+    src: url(../fonts/Bangers-Regular.ttf);
 }
 
 @font-face {
     font-family: game-font;
-    src: url(OpenSans-Regular.ttf);
+    src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 html,
