@@ -15,6 +15,11 @@
     --color-black: #000000;
     --color-disabled: darkgrey;
 
+    /* rank colors */
+    --color-gold: #CFB53B;
+    --color-silver: #E6E8FA;
+    --color-bronze: #8C7853;
+
     /* contrast colors */
     --color-blue-dark-contrast: var(--color-white);
     --color-blue-contrast: var(--color-white);
@@ -26,6 +31,9 @@
     --color-white-contrast: var(--color-black);
     --color-black-contrast: var(--color-white);
     --color-disabled-contrast: dimgrey;
+    --color-gold-contrast: var(--color-black);
+    --color-silver-contrast: var(--color-black);
+    --color-bronze-contrast: var(--color-black);
 
     /* standard shadow */
     --standard-shadow: 4px 4px 0 black;

@@ -13,21 +13,21 @@ const RankIndicator: React.FC = () => {
     const rank = usePlayerRanking(playerName);
 
     // get our text.. thing. what is this even called?
-    const textThingy = useMemo(() => {
+    const [textThingy, color] = useMemo(() => {
 
         // check rank
         switch (rank) {
             case (1):
-                return 'st';
+                return ['st', 'gold'];
 
             case (2):
-                return 'nd';
+                return ['nd', 'silver'];
 
             case (3):
-                return 'rd';
+                return ['rd', 'bronze'];
 
             default:
-                return 'th';
+                return ['th', 'white'];
         }
     }, [rank]);
 
@@ -35,7 +35,7 @@ const RankIndicator: React.FC = () => {
     if (rank === 0)
         return null;
 
-    return <Note color='white'>
+    return <Note color={color}>
         <strong>{rank}{textThingy}</strong>
     </Note>
 
