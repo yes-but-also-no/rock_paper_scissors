@@ -5,6 +5,7 @@ import {useAppSelector} from "../../hooks";
 import {selectPlayerIsAnonymous, selectPlayerName} from "../../store/playerInfo";
 import Note from "../Controls/Note";
 import HighScoresButton from "../HighScores/HighScoresButton";
+import RankIndicator from "../HighScores/RankIndicator";
 
 // this is a footer column with text styling
 const FooterCol = styled(Col)`
@@ -30,9 +31,7 @@ const GameFooter : React.FC = () => {
         <Row center='xs'>
             {!isAnonymous &&
             <FooterCol>
-                <Note color='white'>
-                    <strong>1st</strong>
-                </Note>
+                <RankIndicator/>
             </FooterCol>
             }
 

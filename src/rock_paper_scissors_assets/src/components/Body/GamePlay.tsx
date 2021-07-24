@@ -1,12 +1,13 @@
 import React, {useCallback} from "react";
 import {useMutation} from "react-query";
-import {Move, submitMove} from "../../services/api";
+import {Move, queryClient, submitMove} from "../../services/api";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {selectPlayerName} from "../../store/playerInfo";
 import {setInMatch} from "../../store/gameState";
 import ChooseMove from "./ChooseMove";
 import MoveInProgress from "./MoveInProgress";
 import MatchResult from "./MatchResult";
+import {HighScoresQueryKey} from "../../constants";
 
 // this is the main gameplay screen
 const GamePlay: React.FC = () => {
@@ -19,7 +20,8 @@ const GamePlay: React.FC = () => {
 
     // mutation to submit move
     const mutation = useMutation(submitMove, {
-        onMutate: () => dispatch(setInMatch(true))
+        onMutate: () => dispatch(setInMatch(true)), // set us in match
+        onSuccess: () => queryClient.invalidateQueries(HighScoresQueryKey) // refetch high scores after game
     });
 
     // callback for button press

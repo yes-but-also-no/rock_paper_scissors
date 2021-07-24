@@ -23,16 +23,8 @@ export const fetchHighScores = async (): Promise<HighScores> => {
     // make the call, bogdanoff!
     const result = await rock_paper_scissors.getHighScores();
 
-    // data holder
-    const hsData: HighScores = {};
-
-    // transform to something we can use
-    result.forEach(([name, score]) =>
-        hsData[name] = score
-    );
-
-
-    return hsData;
+    // sort and hand back
+    return result.sort(([, a], [, b]) => b - a);
 }
 
 export {Move, Result, Outcome};

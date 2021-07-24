@@ -21,3 +21,6 @@ export const OutcomeDefinitions = {
 
 // high score fetch interval
 export const HighScoreFetchInterval = 10 * 60 * 1000; // every 10 minutes
+
+// query keys
+export const HighScoresQueryKey = 'highScores';

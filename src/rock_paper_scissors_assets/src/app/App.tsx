@@ -8,7 +8,7 @@ import {selectInMatch} from "../store/gameState";
 import {setHighScores} from "../store/highScores";
 import {useQuery} from "react-query";
 import {fetchHighScores} from "../services/api";
-import {HighScoreFetchInterval} from "../constants";
+import {HighScoreFetchInterval, HighScoresQueryKey} from "../constants";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -47,7 +47,7 @@ const App: React.FC = () => {
 
     // sync our high scores
     useQuery(
-        'highScores',
+        HighScoresQueryKey,
         fetchHighScores,
         {
             refetchInterval: HighScoreFetchInterval,
