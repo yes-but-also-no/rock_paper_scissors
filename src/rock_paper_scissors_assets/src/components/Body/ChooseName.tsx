@@ -6,13 +6,7 @@ import Input from "../Controls/Input";
 import {AnonymousName, NameMaxLength, NameMinLength} from "../../constants";
 import {useAppDispatch} from "../../hooks";
 import {setPlayerName} from "../../store/playerInfo";
-import styled from "styled-components";
-
-// this is the styled row for this section that has some nice spacing
-const Spacer = styled.div`
-  // he fills space 
-  height: 20px;
-`
+import {Spacer} from "../Helpers";
 
 // this is the name select screen, the first screen a player sees if they have no name saved
 const ChooseName: React.FC = () => {

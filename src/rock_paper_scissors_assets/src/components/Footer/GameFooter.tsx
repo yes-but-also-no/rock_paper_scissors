@@ -1,8 +1,8 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import {Col, Grid, Row} from 'react-flexbox-grid';
 import styled from "styled-components";
 import {useAppSelector} from "../../hooks";
-import {selectHasPickedName, selectPlayerIsAnonymous, selectPlayerName} from "../../store/playerInfo";
+import {selectPlayerIsAnonymous, selectPlayerName} from "../../store/playerInfo";
 import Note from "../Controls/Note";
 
 // this is a footer column with text styling
@@ -26,13 +26,13 @@ const GameFooter : React.FC = () => {
     const isAnonymous = useAppSelector(selectPlayerIsAnonymous);
 
     return <Grid fluid>
-        <Row between='xs'>
+        <Row center='xs'>
             {!isAnonymous &&
-                <FooterCol>
-                    <Note color='white'>
-                        <strong>1st</strong>
-                    </Note>
-                </FooterCol>
+            <FooterCol>
+                <Note color='white'>
+                    <strong>1st</strong>
+                </Note>
+            </FooterCol>
             }
 
             <FooterCol xs md={9}>

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import {Col, Grid, Row} from 'react-flexbox-grid';
 import styled from "styled-components";
+import {FillerCol} from "../Helpers";
 
 // this is a footer column with text styling
 const FooterCol = styled(Col)`
@@ -30,12 +31,6 @@ const FooterCol = styled(Col)`
     // social distancing
     margin-left: 10px;
   }
-`;
-
-// these guys only exist to take up space
-const FillerCol = styled(Col).attrs({xs: true})`
-  // we dont want the filler columns to have any size, so as to not mess us up in small screens
-  padding: 0;
 `;
 
 // this is the footer info for dev name and other info
