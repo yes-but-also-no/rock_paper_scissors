@@ -1,20 +1,17 @@
 import React, {useCallback, useState} from "react";
-import {useAppSelector} from "../../hooks";
-import {selectHasPickedName} from "../../store/playerInfo";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Button from "../Controls/Button";
-import styled from "styled-components";
 import Note from "../Controls/Note";
 import Input from "../Controls/Input";
 import {NameMaxLength, NameMinLength} from "../../constants";
-
-// body container gives us some nice spacing
-const BodyContainer = styled.div`
-  
-`;
+import {useAppDispatch} from "../../hooks";
+import {setPlayerName} from "../../store/playerInfo";
 
 // this is the name select screen, the first screen a player sees if they have no name saved
 const ChooseName : React.FC = () => {
+
+    // hook dispatch
+    const dispatch = useAppDispatch();
 
     // find out if we have a name or not
     const [name, setName] = useState('');
@@ -42,8 +39,16 @@ const ChooseName : React.FC = () => {
 
     // submit handler
     const onSubmit = useCallback(() => {
-        console.log('Name is ', name)
-    }, [name]);
+        // validate one more time
+        if (name.length < NameMinLength || name.length > NameMaxLength)
+            return;
+
+        // set it
+        dispatch(
+            setPlayerName(name.toUpperCase())
+        );
+
+    }, [dispatch, name]);
 
     return <Grid fluid>
         <Row start='xs'>
