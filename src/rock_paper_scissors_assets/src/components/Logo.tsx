@@ -21,7 +21,7 @@ const Logo = styled.div`
   color: var(--color-yellow);
 
   // logo font or sans
-  font-family: logo-font, sans-serif;
+  font-family: 'Bangers', sans-serif;
 
   // this prevents the 'k' and 'r' from overlapping the commas
   letter-spacing: 4px;

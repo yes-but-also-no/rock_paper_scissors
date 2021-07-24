@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap');
+
 :root {
     /* Color Theme Swatches in Hex */
     --color-blue-dark: #4c69f6;
@@ -7,20 +9,10 @@
     --color-red: #ee5454;
 }
 
-@font-face {
-    font-family: logo-font;
-    src: url(../fonts/Bangers-Regular.ttf);
-}
-
-@font-face {
-    font-family: game-font;
-    src: url(../fonts/OpenSans-Regular.ttf);
-}
-
 html,
 body,
 #root {
-    font-family: game-font, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     margin: 0;
     padding: 0;

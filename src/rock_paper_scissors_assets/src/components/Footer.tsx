@@ -17,7 +17,7 @@ const FooterCol = styled(Col)`
   color: white;
 
   // logo font or sans
-  font-family: logo-font, sans-serif;
+  font-family: 'Bangers', sans-serif;
 
   // outline effect
   -webkit-text-stroke: 1px black;
@@ -28,7 +28,7 @@ const FooterCol = styled(Col)`
     height: 30px;
     
     // social distancing
-    margin-left: 15px;
+    margin-left: 10px;
   }
 `;
 
