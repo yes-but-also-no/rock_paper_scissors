@@ -2,7 +2,7 @@ import React from "react";
 import {Move} from "../../services/api";
 import {MoveDefinitions} from "../../constants";
 import Button from "../Controls/Button";
-import { shallowEqualObjects } from "shallow-equal";
+import {shallowEqualObjects} from "shallow-equal";
 
 // props def
 interface MoveObjectProps {
@@ -24,7 +24,7 @@ const MoveObject: React.FC<MoveObjectProps> = props => {
         </Button>;
 
     if (shallowEqualObjects(move, MoveDefinitions.Paper))
-        return <Button color='yellow' onClick={onClick}>
+        return <Button color='green' onClick={onClick}>
             <strong>paper</strong>, the safe bet
         </Button>;
 

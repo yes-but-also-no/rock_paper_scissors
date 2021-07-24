@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo";
-import InfoFooter from "../components/Footer/InfoFooter";
-import Button from "../components/Controls/Button";
 import Footer from "../components/Footer/Footer";
 import Body from "../components/Body/Body";
+import {useAppSelector} from "../hooks";
+import {selectInMatch} from "../store/gameState";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -35,19 +35,26 @@ const Section = styled.div`
 // Main app component
 const App: React.FC = () => {
 
+    // find out if we are in a match
+    const isInMatch = useAppSelector(selectInMatch);
+
     return (
         <MainContentArea>
-
             <Section>
+                {!isInMatch &&
                 <Logo/>
+                }
             </Section>
+
 
             <Section>
                 <Body />
             </Section>
 
             <Section>
-                <Footer />
+                {!isInMatch &&
+                <Footer/>
+                }
             </Section>
 
         </MainContentArea>

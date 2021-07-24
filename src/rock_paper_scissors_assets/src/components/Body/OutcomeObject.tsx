@@ -1,7 +1,7 @@
 import React, {useMemo} from "react";
 import {Result} from "../../services/api";
 import {AnonymousName, OutcomeDefinitions} from "../../constants";
-import { shallowEqualObjects } from "shallow-equal";
+import {shallowEqualObjects} from "shallow-equal";
 import Note from "../Controls/Note";
 import {useAppSelector} from "../../hooks";
 import {selectPlayerName} from "../../store/playerInfo";
@@ -50,17 +50,17 @@ const OutcomeObject: React.FC<OutcomeObjectProps> = props => {
 
     // special case for playing yourself
     if (playedSelf)
-        return <Note color='yellow'>
+        return <Note color='white'>
             congratulations, you <strong>played yourself.</strong>
 
-            <br />
-            <br />
+            <br/>
+            <br/>
 
-            also, you {textBold} Nice.
+            also, you <strong>{textBold}</strong> Nice.
         </Note>;
 
     // normal outcome
-    return <Note color={color}>
+    return <Note color='white'>
         {text}<strong>{textBold}</strong>
     </Note>;
 
