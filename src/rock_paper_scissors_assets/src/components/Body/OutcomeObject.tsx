@@ -1,8 +1,14 @@
 import React from "react";
 import {Result} from "../../services/api";
 import Note from "../Controls/Note";
-import {useAppSelector, usePlayerRanking} from "../../hooks";
-import {selectPlayerName} from "../../store/playerInfo";
+import CountUp from 'react-countup';
+import styled from "styled-components";
+
+// styled text
+const PointsText = styled.strong`
+  // green for MONEY
+  color: var(--color-green);
+`;
 
 // props def
 interface OutcomeObjectProps {
@@ -18,15 +24,11 @@ const OutcomeObject: React.FC<OutcomeObjectProps> = props => {
     // expand result
     const {pointsEarned} = result;
 
-    // find our name
-    const playerName = useAppSelector(selectPlayerName);
-
-    // get our points
-    const [, points] = usePlayerRanking(playerName);
-
     // normal outcome
     return <Note color='white'>
-        <strong>{points}</strong>
+        <PointsText>
+            <CountUp prefix='+ ' end={pointsEarned} delay={3.7} suffix=' points'/>
+        </PointsText>
     </Note>;
 
 };
