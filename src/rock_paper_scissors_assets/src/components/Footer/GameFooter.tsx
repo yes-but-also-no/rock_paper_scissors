@@ -8,19 +8,28 @@ import Note from "../Controls/Note";
 import HighScoresButton from "../HighScores/HighScoresButton";
 import RankIndicator from "../HighScores/RankIndicator";
 
-// this is a footer column with text styling
-const FooterCol = styled(Col)`
-  
+// this is a footer row with styling
+const FooterRow = styled(Row)`
+
   // center align best align
   text-align: center;
-  
+
   // space to breathe
   padding-bottom: 10px;
-  
+
+`;
+
+// this handles our rank button
+const FooterRankButton = styled.div`
+  // special case for far rank button
+  ${Note} {
+    // more padding, less i c o n
+    padding: 15px;
+  }
 `;
 
 // this is the footer with player info
-const GameFooter : React.FC = () => {
+const GameFooter: React.FC = () => {
 
     // hook dispatch
     const dispatch = useAppDispatch();
@@ -49,23 +58,23 @@ const GameFooter : React.FC = () => {
     }, [dispatch, isAnonymous, playerName]);
 
     return <Grid fluid>
-        <Row center='xs'>
+        <FooterRow center='xs'>
             {!isAnonymous &&
-            <FooterCol>
+            <FooterRankButton>
                 <RankIndicator playerName={playerName}/>
-            </FooterCol>
+            </FooterRankButton>
             }
 
-            <FooterCol xs md={9}>
+            <Col xs md={9}>
                 <Note onClick={nameClick} color='white'>
                     <strong>{playerName}</strong>
                 </Note>
-            </FooterCol>
+            </Col>
 
 
             <HighScoresButton/>
 
-        </Row>
+        </FooterRow>
     </Grid>
 
 };

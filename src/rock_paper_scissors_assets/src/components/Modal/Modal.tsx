@@ -92,6 +92,9 @@ const ModalBase = styled.div<{ color: string, height: number }>`
 
     // scroll it
     overflow-y: scroll;
+
+    // no padding, we can control ourselves
+    padding: 0;
   }
 `;
 

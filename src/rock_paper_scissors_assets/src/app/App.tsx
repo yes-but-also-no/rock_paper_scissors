@@ -10,6 +10,7 @@ import {useQuery} from "react-query";
 import {fetchHighScores} from "../services/api";
 import {HighScoreFetchInterval, HighScoresQueryKey} from "../constants";
 import Modal from "../components/Modal/Modal";
+import HighScoresList from "../components/HighScores/HighScoresList";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -71,7 +72,7 @@ const App: React.FC = () => {
         <MainContentArea>
             {isHighScoresOpen &&
             <Modal close={closeHighScores} title='high scores' color='blue'>
-                Hello
+                <HighScoresList/>
             </Modal>
             }
 

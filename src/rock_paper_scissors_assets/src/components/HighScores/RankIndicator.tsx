@@ -1,20 +1,36 @@
 import React, {useMemo} from 'react';
 import Note from "../Controls/Note";
 import {usePlayerRanking} from "../../hooks";
+import styled from "styled-components";
 
-// rank indicator props
-interface RankIndicatorProps {
-    playerName: string; // the player whos rank to show
+// custom rank indicator with less padding
+const RankNote = styled(Note)`
+  // less padding
+  padding: 5px;
+
+  // to center the icon
+  display: flex;
+
+  // center it
+  align-items: center;
+
+  // center it again
+  justify-content: center;
+
+  // text center
+  text-align: center;
+`;
+
+// rank indicator basic props
+interface RankIndicatorBasicProps {
+    rank: number; // numerical ranking
 }
 
-// this shows a players rank indicator
-const RankIndicator: React.FC<RankIndicatorProps> = props => {
+// no looup rank indicator, for use in high scores list
+export const RankIndicatorBasic: React.FC<RankIndicatorBasicProps> = props => {
 
     // expand props
-    const {playerName} = props;
-
-    // try and get our rank
-    const rank = usePlayerRanking(playerName);
+    const {rank} = props;
 
     // get our text.. thing. what is this even called?
     const [textThingy, color] = useMemo(() => {
@@ -39,9 +55,27 @@ const RankIndicator: React.FC<RankIndicatorProps> = props => {
     if (rank === 0)
         return null;
 
-    return <Note color={color}>
+    return <RankNote color={color}>
         <strong>{rank}{textThingy}</strong>
-    </Note>
+    </RankNote>
+}
+
+// rank indicator props
+interface RankIndicatorProps {
+    playerName: string; // the player whos rank to show
+}
+
+// this shows a players rank indicator
+const RankIndicator: React.FC<RankIndicatorProps> = props => {
+
+    // expand props
+    const {playerName} = props;
+
+    // try and get our rank
+    const rank = usePlayerRanking(playerName);
+
+    // add to base
+    return <RankIndicatorBasic rank={rank}/>
 
 };
 

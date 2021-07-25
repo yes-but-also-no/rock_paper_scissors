@@ -16,9 +16,6 @@ const HighScoresNote = styled(Note)`
   // center it
   align-items: center;
 
-  //align-self: stretch;
-  margin-bottom: 10px;
-
   // control the size
   img {
     height: 1.5rem;
