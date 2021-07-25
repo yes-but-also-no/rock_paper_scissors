@@ -16,6 +16,20 @@ export const RoundedNote = styled(Note)<{ extraPadding: boolean }>`
   }
 `;
 
+// this is the "loading" player while waiting for our move to complete
+export const PlayerLoading: React.FC = () => {
+
+    return (
+        <RoundedNote extraPadding={true} color='disabled'>
+            <Row center='xs' middle='xs'>
+                <Col xs>
+                    <div className='ld ld-ring ld-spin'/>
+                </Col>
+            </Row>
+        </RoundedNote>
+    );
+}
+
 // props for single player
 interface PlayerProps {
     playerName: string; // the players name
