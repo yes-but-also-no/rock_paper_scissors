@@ -73,6 +73,7 @@ const InspectPlayer: React.FC = () => {
 
     return <Modal
         extraButton={
+            localPlayerName === playerName &&
             <Button onClick={changeName} color='yellow'>
                 log out
             </Button>

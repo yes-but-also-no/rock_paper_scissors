@@ -1,9 +1,10 @@
-import React from 'react';
-import {useAppSelector} from "../../hooks";
+import React, {useCallback} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import {selectAllHighScores} from "../../store/highScores";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import {RankIndicatorBasic} from "./RankIndicator";
 import styled from "styled-components";
+import {setPlayerToInspect} from "../../store/gameState";
 
 // special no padding grid for high scores
 const HighScoresGrid = styled(Grid)`
@@ -14,6 +15,11 @@ const HighScoresGrid = styled(Grid)`
   // no column padding
   div[class^="col-"] {
     padding: 0;
+  }
+
+  // row colors
+  .row:nth-of-type(even) {
+    background-color: var(--color-row-alt);
   }
 `;
 
@@ -30,7 +36,17 @@ const HighScoreEntry: React.FC<HighScoreEntryProps> = props => {
     // expand props
     const {playerName, rank, score} = props;
 
-    return <Row center='xs' middle='xs'>
+    // hook dispatch
+    const dispatch = useAppDispatch();
+
+    // method to inspect this player
+    const inspect = useCallback(() =>
+            dispatch(
+                setPlayerToInspect(playerName)
+            )
+        , [dispatch, playerName]);
+
+    return <Row onClick={inspect} center='xs' middle='xs'>
         <Col xs={3}>
             <RankIndicatorBasic rank={rank}/>
         </Col>
