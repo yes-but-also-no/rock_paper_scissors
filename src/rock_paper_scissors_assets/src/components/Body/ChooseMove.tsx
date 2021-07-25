@@ -32,7 +32,6 @@ const ChooseMove: React.FC<ChooseMoveProps> = props => {
         </Row>
 
         <Spacer />
-        <Spacer />
 
         <Row center='xs'>
             <Col xs={11} md={9}>
@@ -40,15 +39,11 @@ const ChooseMove: React.FC<ChooseMoveProps> = props => {
             </Col>
         </Row>
 
-        <Spacer />
-
         <Row center='xs'>
             <Col xs={11} md={9}>
                 <MoveObject move={MoveDefinitions.Paper} onClick={() => playMove(MoveDefinitions.Paper)} />
             </Col>
         </Row>
-
-        <Spacer />
 
         <Row center='xs'>
             <Col xs={11} md={9}>

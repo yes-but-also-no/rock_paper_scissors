@@ -8,6 +8,7 @@ import Note from "../Controls/Note";
 import {useAppSelector} from "../../hooks";
 import {selectPlayerName} from "../../store/playerInfo";
 import Button from "../Controls/Button";
+import Icon from "../Controls/Icon";
 
 // props def
 interface MatchResultProps {
@@ -77,7 +78,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='yellow' onClick={backToHome}>
+                <Button icon={<Icon color='black' icon='chevron-forward' />} color='yellow' onClick={backToHome}>
                     back to <strong>home base</strong>
                 </Button>
             </Col>

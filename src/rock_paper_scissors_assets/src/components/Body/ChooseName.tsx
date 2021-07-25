@@ -7,6 +7,7 @@ import {AnonymousName, NameMaxLength, NameMinLength} from "../../constants";
 import {useAppDispatch} from "../../hooks";
 import {setPlayerName} from "../../store/playerInfo";
 import {Spacer} from "../Helpers";
+import Icon from "../Controls/Icon";
 
 // this is the name select screen, the first screen a player sees if they have no name saved
 const ChooseName: React.FC = () => {
@@ -75,13 +76,12 @@ const ChooseName: React.FC = () => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <Button color='yellow' onClick={onPlayClick}>
+                <Button icon={<Icon color='black' icon='chevron-forward' />} color='yellow' onClick={onPlayClick}>
                     play as <strong>{(name === '' || invalid) ? AnonymousName : name}</strong>
                 </Button>
             </Col>
         </Row>
 
-        <Spacer/>
         <Spacer/>
 
         {invalid &&

@@ -9,6 +9,9 @@ const ButtonContainer = styled.div<{color: string}>`
   // padding makes it look good
   padding: 15px;
   
+  // space to breathe
+  margin: 5px 0;
+  
   // text color contrasts
   color: var(--color-${props => props.color}-contrast);
   
@@ -24,10 +27,21 @@ const ButtonContainer = styled.div<{color: string}>`
   // in a slightly less annoying weight
   font-weight: 400;
   
+  // flex it up
+  display: flex;
+  
+  // and make it look pretty
+  align-items: center;
+  
   // make sure the label isn't all tilt-y
   span {
     display: inline-block;
+    
+    // undo tilt
     transform: skewX(15deg);
+    
+    // room to grow
+    flex: 1;
   }
 `;
 
