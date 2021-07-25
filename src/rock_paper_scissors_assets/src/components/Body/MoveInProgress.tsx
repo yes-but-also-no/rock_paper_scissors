@@ -4,7 +4,9 @@ import {Col, Grid, Row} from "react-flexbox-grid";
 import Note from "../Controls/Note";
 import {Spacer} from "../Helpers";
 import Button from "../Controls/Button";
-import MoveObject from "./MoveObject";
+import {useAppSelector} from "../../hooks";
+import {selectPlayerName} from "../../store/playerInfo";
+import Player from "../Player/Player";
 
 // props def
 interface MoveInProgressProps {
@@ -15,14 +17,17 @@ interface MoveInProgressProps {
 const MoveInProgress: React.FC<MoveInProgressProps> = props => {
 
     // expand props
-    const { move } = props;
+    const {move} = props;
+
+    // find our name
+    const playerName = useAppSelector(selectPlayerName);
 
     return <Grid fluid>
 
         <Row center='xs'>
             <Col xs={11} md={9}>
                 <Button color='disabled'>
-                    <div className='ld ld-ring ld-spin' />
+                    <div className='ld ld-ring ld-spin'/>
                 </Button>
             </Col>
         </Row>
@@ -43,7 +48,7 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
 
         <Row center='xs'>
             <Col xs={11} md={9}>
-                <MoveObject move={move} />
+                <Player playerName={playerName}/>
             </Col>
         </Row>
 

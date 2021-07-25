@@ -41,6 +41,13 @@ const RankNote = styled(Note)`
   }
 `;
 
+// this is the filler if there is no rank
+// hacky, but im out of time
+const Filler = styled.div`
+  // take up space
+  height: 34px;
+`;
+
 // rank indicator basic props
 interface RankIndicatorBasicProps {
     rank: number; // numerical ranking
@@ -73,7 +80,7 @@ export const RankIndicatorBasic: React.FC<RankIndicatorBasicProps> = props => {
 
     // check for unranked
     if (rank === 0)
-        return null;
+        return <Filler/>;
 
     return <RankNote color={color}>
         <strong>{rank}<small>{textThingy}</small></strong>

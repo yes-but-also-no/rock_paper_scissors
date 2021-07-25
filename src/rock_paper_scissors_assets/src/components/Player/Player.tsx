@@ -1,6 +1,4 @@
-import React, {useCallback, useMemo} from "react";
-import {useAppDispatch} from "../../hooks";
-import {setPlayerToInspect} from "../../store/gameState";
+import React, {useMemo} from "react";
 import {Col, Row} from "react-flexbox-grid";
 import RankIndicator from "../HighScores/RankIndicator";
 import {AnonymousName} from "../../constants";
@@ -8,42 +6,35 @@ import Note from "../Controls/Note";
 import styled from "styled-components";
 
 // this is a rounded note, used for player names
-export const RoundedNote = styled(Note).attrs({isButton: true})`
+export const RoundedNote = styled(Note)<{ extraPadding: boolean }>`
   // smoooooth
   border-radius: 10px;
 
   // less padding
-  padding: 5px 15px;
+  ${props => !props.extraPadding &&
+          `padding: 5px 15px;`
+  }
 `;
 
 // props for single player
 interface PlayerProps {
     playerName: string; // the players name
+    onClick?(): void; // when happens when we click?
 }
 
 // this is a single player represented as an object
 const Player: React.FC<PlayerProps> = props => {
 
     // expand props
-    const {playerName} = props;
+    const {playerName, onClick} = props;
 
     // check if anonymous
     const isAnonymous = useMemo(() =>
         playerName === AnonymousName
         , [playerName]);
 
-    // hook dispatch
-    const dispatch = useAppDispatch();
-
-    // method to inspect this player
-    const inspect = useCallback(() =>
-            dispatch(
-                setPlayerToInspect(playerName)
-            )
-        , [dispatch, playerName]);
-
     return (
-        <RoundedNote onClick={!isAnonymous && inspect} color='white'>
+        <RoundedNote isButton={onClick !== undefined} extraPadding={isAnonymous} onClick={onClick} color='white'>
             <Row center='xs' middle='xs'>
                 {!isAnonymous &&
                 <Col>

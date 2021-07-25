@@ -6,6 +6,7 @@ import {selectPlayerIsAnonymous, selectPlayerName, setPlayerName} from "../../st
 import Note from "../Controls/Note";
 import HighScoresButton from "../HighScores/HighScoresButton";
 import Player from "../Player/Player";
+import {setPlayerToInspect} from "../../store/gameState";
 
 // this is a footer row with styling
 const FooterRow = styled(Row)`
@@ -38,27 +39,26 @@ const GameFooter: React.FC = () => {
 
     // if we are anon, clicking on the footer will let us pick a name
     // otherwise, it will show us our stats
-    const clearName = useCallback(() => {
+    const nameClick = useCallback(() => {
+
         // clear our name if anon
-        dispatch(
-            setPlayerName('')
-        );
-    }, [dispatch]);
+        if (isAnonymous)
+            dispatch(
+                setPlayerName('')
+            );
+
+        // otherwise, inspect our player
+        else
+            dispatch(
+                setPlayerToInspect(playerName)
+            );
+    }, [dispatch, isAnonymous, playerName]);
 
     return <Grid fluid>
-        <FooterRow center='xs'>
-            <Col xs>
-                {isAnonymous &&
-                <RoundedNote onClick={clearName} color='white'>
-                    <strong>{playerName}</strong>
-                </RoundedNote>
-                }
-
-                {!isAnonymous &&
-                <Player playerName={playerName}/>
-                }
+        <FooterRow center='xs' around='md'>
+            <Col xs md={10}>
+                <Player onClick={nameClick} playerName={playerName}/>
             </Col>
-
 
             <HighScoresButton/>
 
