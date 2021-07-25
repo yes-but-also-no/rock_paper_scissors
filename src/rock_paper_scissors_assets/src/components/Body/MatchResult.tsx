@@ -206,7 +206,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
     const {move, result, backToHome} = props;
 
     // expand result
-    const {outcome} = result;
+    const {outcome, opponentName, opponentMove, pointsEarned} = result;
 
     // get player name
     const playerName = useAppSelector(selectPlayerName);
@@ -229,7 +229,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
         // fallback
         return ['disabled', 'something went wrong. sorry about that'];
 
-    }, [outcome])
+    }, [outcome]);
 
     return <Grid fluid>
 
@@ -245,7 +245,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
 
         <Row center='xs'>
             <AnimatedOpponentCol key='opponent' xs={11} md={9}>
-                <Player playerName={result.opponentName}/>
+                <Player playerName={opponentName}/>
             </AnimatedOpponentCol>
         </Row>
 
@@ -254,7 +254,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
         <Row center='xs'>
             <AnimatedMoveRightCol xs md={9} key='opponentMove'>
                 <MoveText>
-                    <MoveName move={result.opponentMove}/>
+                    <MoveName move={opponentMove}/>
                 </MoveText>
             </AnimatedMoveRightCol>
         </Row>
@@ -262,7 +262,7 @@ const MatchResult: React.FC<MatchResultProps> = props => {
         <Spacer/>
 
         <Row center='xs'>
-            <AnimatedScoreCol show={(result.pointsEarned > 0).toString()}>
+            <AnimatedScoreCol show={(pointsEarned > 0).toString()}>
                 <OutcomeObject result={result}/>
             </AnimatedScoreCol>
         </Row>

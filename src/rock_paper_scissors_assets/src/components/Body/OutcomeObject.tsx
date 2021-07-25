@@ -27,7 +27,7 @@ const OutcomeObject: React.FC<OutcomeObjectProps> = props => {
     // normal outcome
     return <Note color='white'>
         <PointsText>
-            <CountUp prefix='+ ' end={pointsEarned} delay={3.7} suffix=' points'/>
+            <CountUp prefix='+ ' end={pointsEarned} delay={3.7} separator=',' suffix=' points'/>
         </PointsText>
     </Note>;
 
