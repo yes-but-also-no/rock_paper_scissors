@@ -19,6 +19,26 @@ const RankNote = styled(Note)`
 
   // text center
   text-align: center;
+
+  // no shadow this time
+  box-shadow: none;
+
+  // circle!
+  border-radius: 50%;
+
+  // fixed height
+  height: 30px;
+
+  // and width
+  width: 30px;
+
+  // center it
+  margin: 0 auto;
+
+  // shrink text
+  small {
+    font-size: 0.5rem;
+  }
 `;
 
 // rank indicator basic props
@@ -56,7 +76,7 @@ export const RankIndicatorBasic: React.FC<RankIndicatorBasicProps> = props => {
         return null;
 
     return <RankNote color={color}>
-        <strong>{rank}{textThingy}</strong>
+        <strong>{rank}<small>{textThingy}</small></strong>
     </RankNote>
 }
 

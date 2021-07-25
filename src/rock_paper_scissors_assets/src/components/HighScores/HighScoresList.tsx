@@ -14,7 +14,7 @@ const HighScoresGrid = styled(Grid)`
 
   // no column padding
   div[class^="col-"] {
-    padding: 0;
+    padding: 5px 0;
   }
 
   // row colors

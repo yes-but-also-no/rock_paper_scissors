@@ -80,7 +80,7 @@ const InspectPlayer: React.FC = () => {
         }
         close={closeInspectPlayer}
         title={playerName}
-        height={50}
+        height={60}
         color='blue'
     >
         <InspectPlayerGrid fluid>

@@ -3,10 +3,9 @@ import {Col, Grid, Row} from 'react-flexbox-grid';
 import styled from "styled-components";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {selectPlayerIsAnonymous, selectPlayerName, setPlayerName} from "../../store/playerInfo";
-import {setPlayerToInspect} from "../../store/gameState";
 import Note from "../Controls/Note";
 import HighScoresButton from "../HighScores/HighScoresButton";
-import RankIndicator from "../HighScores/RankIndicator";
+import Player from "../Player/Player";
 
 // this is a footer row with styling
 const FooterRow = styled(Row)`
@@ -19,13 +18,10 @@ const FooterRow = styled(Row)`
 
 `;
 
-// this handles our rank button
-const FooterRankButton = styled.div`
-  // special case for far rank button
-  ${Note} {
-    // more padding, less i c o n
-    padding: 15px;
-  }
+// this is a rounded note, copied from player.tsx. shame on me.
+export const RoundedNote = styled(Note).attrs({isButton: true})`
+  // smoooooth
+  border-radius: 10px;
 `;
 
 // this is the footer with player info
@@ -42,33 +38,25 @@ const GameFooter: React.FC = () => {
 
     // if we are anon, clicking on the footer will let us pick a name
     // otherwise, it will show us our stats
-    const nameClick = useCallback(() => {
-
+    const clearName = useCallback(() => {
         // clear our name if anon
-        if (isAnonymous)
-            dispatch(
-                setPlayerName('')
-            );
-
-        // otherwise, inspect our player
-        else
-            dispatch(
-                setPlayerToInspect(playerName)
-            );
-    }, [dispatch, isAnonymous, playerName]);
+        dispatch(
+            setPlayerName('')
+        );
+    }, [dispatch]);
 
     return <Grid fluid>
         <FooterRow center='xs'>
-            {!isAnonymous &&
-            <FooterRankButton>
-                <RankIndicator playerName={playerName}/>
-            </FooterRankButton>
-            }
-
-            <Col xs md={9}>
-                <Note onClick={nameClick} color='white'>
+            <Col xs>
+                {isAnonymous &&
+                <RoundedNote onClick={clearName} color='white'>
                     <strong>{playerName}</strong>
-                </Note>
+                </RoundedNote>
+                }
+
+                {!isAnonymous &&
+                <Player playerName={playerName}/>
+                }
             </Col>
 
 

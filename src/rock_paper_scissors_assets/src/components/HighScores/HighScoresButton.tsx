@@ -16,6 +16,12 @@ const HighScoresNote = styled(Note).attrs({isButton: true})`
   // center it
   align-items: center;
 
+  // idk, grids are weird
+  margin-right: 8px;
+
+  // smoooooth
+  border-radius: 10px;
+
   // control the size
   img {
     height: 1.5rem;

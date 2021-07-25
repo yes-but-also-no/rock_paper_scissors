@@ -29,7 +29,7 @@ const Note = styled.div<{color: string, isButton?: boolean}>`
     // hover effect
     @media (hover: hover) {
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
         }
     }
     
