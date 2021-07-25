@@ -1,5 +1,7 @@
 # Block, Paper, Scissors!
 
+![screenshot](https://github.com/yes-but-also-no/rock_paper_scissors/blob/master/logo.png?raw=true)
+
 ---
 
 Block, Paper, Scissors is a novel take on the age-old dispute-settling game we grew up with, powered by The Internet Computer.
