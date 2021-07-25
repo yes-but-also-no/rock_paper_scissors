@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {selectAllHighScores} from "../../store/highScores";
 import {Col, Grid, Row} from "react-flexbox-grid";
@@ -67,8 +67,13 @@ const HighScoresList: React.FC = () => {
     // get all high scores
     const allHighScores = useAppSelector(selectAllHighScores);
 
+    // take the top 99
+    const topScores = useMemo(() =>
+        allHighScores.slice(0, 99)
+    , [allHighScores]);
+
     return <HighScoresGrid>
-        {allHighScores.map(([playerName, score], index) =>
+        {topScores.map(([playerName, score], index) =>
             <HighScoreEntry playerName={playerName} score={score} rank={index + 1} key={playerName}/>
         )}
     </HighScoresGrid>;
