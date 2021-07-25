@@ -1,7 +1,7 @@
 {
   "name": "rock_paper_scissors_assets",
   "version": "0.1.0",
-  "description": "Internet Computer starter application",
+  "description": "Front end for Block, Paper, Scissors!",
   "keywords": [
     "Internet Computer",
     "Motoko",
