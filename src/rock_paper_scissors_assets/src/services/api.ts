@@ -1,7 +1,7 @@
 import {rock_paper_scissors} from "../../../declarations/rock_paper_scissors";
 import {Move, Outcome, Result} from "../../../declarations/rock_paper_scissors/rock_paper_scissors.did";
 import {QueryClient} from "react-query";
-import {HighScores} from "../store/highScores";
+import {HighScores, sortHighScores} from "../store/highScores";
 
 // Create queryClient
 export const queryClient = new QueryClient();
@@ -24,7 +24,17 @@ export const fetchHighScores = async (): Promise<HighScores> => {
     const result = await rock_paper_scissors.getHighScores();
 
     // sort and hand back
-    return result.sort(([, a], [, b]) => b - a);
+    return sortHighScores(result);
+}
+
+// pulls a single players score
+// managed by query client
+export const fetchPlayerHighScore = async (playerName: string): Promise<number> => {
+
+    // hit up the insane clown posse
+    const [score] = await rock_paper_scissors.getHighScoreByName(playerName);
+
+    return score || 0;
 }
 
 export {Move, Result, Outcome};

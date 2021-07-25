@@ -7,9 +7,10 @@ import {useMemo} from "react";
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-// get a players ranking by name
+// get a players ranking and score by name
 // will be 1 based, or zero for unranked
-export const usePlayerRanking = (playerName: string): number => {
+// returns [rank, score]
+export const usePlayerRanking = (playerName: string): [number, number] => {
 
     // get all high scores
     const allHighScores = useAppSelector(selectAllHighScores);
@@ -19,11 +20,12 @@ export const usePlayerRanking = (playerName: string): number => {
 
         // start at unranked
         let rank = 0;
+        let score = 0;
 
         // loop all
         for (let i = 0; i < allHighScores.length; i++) {
             // loop up name
-            const [pName] = allHighScores[i];
+            const [pName, pScore] = allHighScores[i];
 
             // check name
             if (pName !== playerName)
@@ -34,11 +36,14 @@ export const usePlayerRanking = (playerName: string): number => {
             // add one to give us one based
             rank = (i + 1);
 
+            // add his score
+            score = pScore;
+
             // save some computing power. You're welcome.
             break;
         }
 
         // done
-        return rank;
+        return [rank, score];
     }, [allHighScores, playerName]);
 }

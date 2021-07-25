@@ -72,7 +72,7 @@ const RankIndicator: React.FC<RankIndicatorProps> = props => {
     const {playerName} = props;
 
     // try and get our rank
-    const rank = usePlayerRanking(playerName);
+    const [rank] = usePlayerRanking(playerName);
 
     // add to base
     return <RankIndicatorBasic rank={rank}/>

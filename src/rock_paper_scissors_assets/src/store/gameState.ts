@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "./index";
+import {setPlayerName} from "./playerInfo";
 
 // this tracks the current game state
 // popups, loading, etc
@@ -65,7 +66,12 @@ const gameStateSlice = createSlice({
                 state.errorMessage = '';
             }
         },
-    }
+    },
+    extraReducers: builder =>
+        builder.addCase(setPlayerName, () =>
+            // return to initial state
+            initialState
+        )
 })
 
 // pull actions
@@ -81,5 +87,8 @@ export const selectIsHighScoresOpen = (state: RootState) => state.gameState.high
 
 // is player inspection open
 export const selectIsInspectPlayerOpen = (state: RootState) => state.gameState.inspectPlayerName !== '';
+
+// what player are we inspecting
+export const selectPlayerToInspect = (state: RootState) => state.gameState.inspectPlayerName;
 
 export default gameStateSlice.reducer;

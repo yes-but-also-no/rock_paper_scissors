@@ -4,13 +4,14 @@ import Logo from "../components/Logo";
 import Footer from "../components/Footer/Footer";
 import Body from "../components/Body/Body";
 import {useAppDispatch, useAppSelector} from "../hooks";
-import {selectInMatch, selectIsHighScoresOpen, setHighScoresOpen} from "../store/gameState";
+import {selectInMatch, selectIsHighScoresOpen, selectIsInspectPlayerOpen, setHighScoresOpen} from "../store/gameState";
 import {setHighScores} from "../store/highScores";
 import {useQuery} from "react-query";
 import {fetchHighScores} from "../services/api";
 import {HighScoreFetchInterval, HighScoresQueryKey} from "../constants";
 import Modal from "../components/Modal/Modal";
 import HighScoresList from "../components/HighScores/HighScoresList";
+import InspectPlayer from "../components/HighScores/InspectPlayer";
 
 // Main column controls our width, and ensures we are using the full height of the screen
 const MainContentArea = styled.div`
@@ -61,6 +62,9 @@ const App: React.FC = () => {
     // find out if we have high scores open
     const isHighScoresOpen = useAppSelector(selectIsHighScoresOpen);
 
+    // find out if we are inspecting a player
+    const isInspectPlayerOpen = useAppSelector(selectIsInspectPlayerOpen);
+
     // method to close hide scores
     const closeHighScores = useCallback(() =>
             dispatch(
@@ -74,6 +78,10 @@ const App: React.FC = () => {
             <Modal close={closeHighScores} title='high scores' color='blue'>
                 <HighScoresList/>
             </Modal>
+            }
+
+            {isInspectPlayerOpen &&
+            <InspectPlayer/>
             }
 
             <Section>
