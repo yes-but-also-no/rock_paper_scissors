@@ -67,7 +67,7 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
     return <Grid fluid>
 
         <Row center='xs'>
-            <AnimatedRightCol xs={11} md={9}>
+            <AnimatedRightCol key='opponent' xs={11} md={9}>
                 <PlayerLoading/>
             </AnimatedRightCol>
         </Row>
@@ -87,7 +87,7 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
         <Spacer />
 
         <Row center='xs'>
-            <AnimatedLeftCol xs={11} md={9}>
+            <AnimatedLeftCol key='player' xs={11} md={9}>
                 <Player playerName={playerName}/>
             </AnimatedLeftCol>
         </Row>

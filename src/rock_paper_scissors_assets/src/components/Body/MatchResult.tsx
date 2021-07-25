@@ -9,6 +9,33 @@ import {useAppSelector} from "../../hooks";
 import {selectPlayerName} from "../../store/playerInfo";
 import Button from "../Controls/Button";
 import Icon from "../Controls/Icon";
+import Player from "../Player/Player";
+import styled, {keyframes} from "styled-components";
+import {flipInX} from 'react-animations';
+
+// entry animation for opponent
+const opponentAnim = keyframes`${flipInX}`;
+
+// animated column
+const AnimatedOpponentCol = styled(Col)`
+  // entry anim
+  animation: 1s ${opponentAnim};
+`;
+
+// back to home sticks to bottom
+const BackToHomeContainer = styled.div`
+  // fixed, finally
+  position: fixed;
+  
+  // some space
+  bottom: 10px;
+  
+  // not QUITE full
+  width: 100vw;
+  
+  // center it
+  left: 0;
+`;
 
 // props def
 interface MatchResultProps {
@@ -29,19 +56,9 @@ const MatchResult: React.FC<MatchResultProps> = props => {
     return <Grid fluid>
 
         <Row center='xs'>
-            <Col xs md={9}>
-                <Note color='white'>
-                    <strong>{result.opponentName}</strong>
-                </Note>
-            </Col>
-        </Row>
-
-        <Spacer />
-
-        <Row center='xs'>
-            <Col xs={11} md={9}>
-                <MoveObject move={result.opponentMove} />
-            </Col>
+            <AnimatedOpponentCol key='opponent' xs md={9}>
+                <Player playerName={result.opponentName}/>
+            </AnimatedOpponentCol>
         </Row>
 
         <Spacer />
@@ -57,32 +74,20 @@ const MatchResult: React.FC<MatchResultProps> = props => {
         <Spacer/>
 
         <Row center='xs'>
-            <Col xs={11} md={9}>
-                <MoveObject move={move}/>
+            <Col key='player' xs md={9}>
+                <Player playerName={playerName}/>
             </Col>
         </Row>
 
-        <Spacer/>
-
-        <Row center='xs'>
-            <Col xs md={9}>
-                <Note color='white'>
-                    <strong>{playerName}</strong>
-                </Note>
-            </Col>
-        </Row>
-
-        <Spacer/>
-        <Spacer/>
-        <Spacer/>
-
-        <Row center='xs'>
-            <Col xs={11} md={9}>
-                <Button icon={<Icon color='black' icon='chevron-forward' />} color='yellow' onClick={backToHome}>
-                    back to <strong>home base</strong>
-                </Button>
-            </Col>
-        </Row>
+        <BackToHomeContainer>
+            <Row center='xs'>
+                <Col xs={11} md={6}>
+                    <Button icon={<Icon color='black' icon='chevron-forward' />} color='yellow' onClick={backToHome}>
+                        back to <strong>home base</strong>
+                    </Button>
+                </Col>
+            </Row>
+        </BackToHomeContainer>
 
     </Grid>
 
