@@ -5,6 +5,7 @@ import {Col, Grid, Row} from "react-flexbox-grid";
 import {RankIndicatorBasic} from "./RankIndicator";
 import styled from "styled-components";
 import {setPlayerToInspect} from "../../store/gameState";
+import numberWithCommas from 'number-with-commas';
 
 // special no padding grid for high scores
 const HighScoresGrid = styled(Grid)`
@@ -46,6 +47,11 @@ const HighScoreEntry: React.FC<HighScoreEntryProps> = props => {
             )
         , [dispatch, playerName]);
 
+    // get score with commas
+    const scoreWithCommas = useMemo(() =>
+        numberWithCommas(score)
+    , [score]);
+
     return <Row onClick={inspect} center='xs' middle='xs'>
         <Col xs={3}>
             <RankIndicatorBasic rank={rank}/>
@@ -56,7 +62,7 @@ const HighScoreEntry: React.FC<HighScoreEntryProps> = props => {
         </Col>
 
         <Col xs={3}>
-            {score}
+            {scoreWithCommas}
         </Col>
     </Row>;
 }

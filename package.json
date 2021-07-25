@@ -51,6 +51,7 @@
   ],
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "number-with-commas": "^1.1.0",
     "react": "^17.0.2",
     "react-animations": "^1.0.0",
     "react-countup": "^4.4.0",
