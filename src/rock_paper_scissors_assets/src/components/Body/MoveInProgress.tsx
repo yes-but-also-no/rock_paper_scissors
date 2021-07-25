@@ -1,5 +1,4 @@
 import React from "react";
-import {Move} from "../../services/api";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Note from "../Controls/Note";
 import {Spacer} from "../Helpers";
@@ -9,7 +8,7 @@ import Player, {PlayerLoading} from "../Player/Player";
 import styled, {keyframes} from "styled-components";
 import {bounceIn, bounceInLeft, bounceInRight} from 'react-animations';
 
-// entry animation for the logo
+// entry animations
 const inLeftAnim = keyframes`${bounceInLeft}`;
 const inRightAnim = keyframes`${bounceInRight}`;
 const inAnim = keyframes`${bounceIn}`;
@@ -50,16 +49,29 @@ const AnimatedCenterCol = styled(Col)`
   opacity: 0;
 `;
 
-// props def
-interface MoveInProgressProps {
-    move: Move; // the move we are currently submitting
-}
+// copy paste from result, to keep spacing
+const MoveText = styled.span`
+  // don't want to brag or anything
+  font-size: xx-large;
+
+  // center align best align
+  text-align: center;
+
+  // cool, comic book white
+  color: white;
+
+  // logo font or sans
+  font-family: 'Bangers', sans-serif;
+
+  // outline effect
+  -webkit-text-stroke: 1px black;
+
+  // hidden
+  opacity: 0;
+`;
 
 // this is where you pick the move to make
-const MoveInProgress: React.FC<MoveInProgressProps> = props => {
-
-    // expand props
-    const {move} = props;
+const MoveInProgress: React.FC = () => {
 
     // find our name
     const playerName = useAppSelector(selectPlayerName);
@@ -72,8 +84,17 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
             </AnimatedRightCol>
         </Row>
 
-        <Spacer />
-        <Spacer />
+        <Spacer/>
+
+        <Row center='xs'>
+            <Col xs md={9} key='opponentMove'>
+                <MoveText>
+                    hidden
+                </MoveText>
+            </Col>
+        </Row>
+
+        <Spacer/>
 
         <Row center='xs'>
             <AnimatedCenterCol>
@@ -83,8 +104,17 @@ const MoveInProgress: React.FC<MoveInProgressProps> = props => {
             </AnimatedCenterCol>
         </Row>
 
-        <Spacer />
-        <Spacer />
+        <Spacer/>
+
+        <Row center='xs'>
+            <Col xs md={9} key='playerMove'>
+                <MoveText>
+                    hidden
+                </MoveText>
+            </Col>
+        </Row>
+
+        <Spacer/>
 
         <Row center='xs'>
             <AnimatedLeftCol key='player' xs={11} md={9}>

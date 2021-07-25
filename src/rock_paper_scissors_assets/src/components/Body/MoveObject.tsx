@@ -6,6 +6,32 @@ import {shallowEqualObjects} from "shallow-equal";
 import Icon from "../Controls/Icon";
 
 // props def
+interface MoveNameProps {
+    move: Move; // the move we are currently showing
+}
+
+// text only version
+export const MoveName: React.FC<MoveNameProps> = props => {
+
+    // expand props
+    const {move} = props;
+
+    // can't use switch cuz javascript and obj pass by ref and all that jazz
+
+    if (shallowEqualObjects(move, MoveDefinitions.Rock))
+        return <>rock</>;
+
+    if (shallowEqualObjects(move, MoveDefinitions.Paper))
+        return <>paper</>;
+
+    if (shallowEqualObjects(move, MoveDefinitions.Scissors))
+        return <>scissors</>;
+
+
+    return <>unknown move</>;
+}
+
+// props def
 interface MoveObjectProps {
     move: Move; // the move we are currently submitting
     onClick?(): void; // click event

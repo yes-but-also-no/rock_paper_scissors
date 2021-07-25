@@ -40,7 +40,7 @@ const GamePlay: React.FC = () => {
 
     // if we are submitting a move, show the progress screen
     if (mutation.isLoading)
-        return <MoveInProgress move={mutation.variables.move}/>
+        return <MoveInProgress/>
 
     // if we got a result
     if (mutation.isSuccess)
