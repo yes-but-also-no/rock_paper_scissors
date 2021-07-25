@@ -5,7 +5,7 @@ import {useAppDispatch} from "../../hooks";
 import {setHighScoresOpen} from "../../store/gameState";
 
 // style to handle image
-const HighScoresNote = styled(Note)`
+const HighScoresNote = styled(Note).attrs({isButton: true})`
 
   // less padding, more i c o n
   padding: 10px 15px;

@@ -33,6 +33,21 @@ const ButtonContainer = styled.div<{color: string}>`
   // and make it look pretty
   align-items: center;
   
+  // hover effect
+  @media (hover: hover) {
+    &:hover {
+      transform: skewX(-15deg) scale(1.1);
+    }
+  }
+  
+  // tap effect
+  &:active {
+    transform: skewX(-15deg) scale(0.9);
+  }
+  
+  // smooth effects
+  transition: transform 200ms ease;
+  
   // make sure the label isn't all tilt-y
   span {
     display: inline-block;

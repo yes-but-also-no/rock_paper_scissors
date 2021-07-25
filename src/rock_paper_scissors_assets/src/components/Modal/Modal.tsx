@@ -105,6 +105,7 @@ const ModalFooter = styled.div`
 
 // footer col with padding
 const ModalFooterCol = styled(Col)`
+  text-align: center;
   padding-top: 10px;
 `;
 
@@ -166,15 +167,15 @@ const Modal: React.FC<ModalProps> = props => {
 
             <ModalFooter>
                 <Grid fluid>
-                    <Row center='xs'>
-                        <ModalFooterCol xs={12} md>
+                    <Row around='xs'>
+                        <ModalFooterCol xs={11} md={5}>
                             <Button onClick={close} color='red'>
                                 Close
                             </Button>
                         </ModalFooterCol>
 
                         {extraButton &&
-                        <ModalFooterCol xs={12} md>
+                        <ModalFooterCol xs={11} md={5}>
                             {extraButton}
                         </ModalFooterCol>
                         }
